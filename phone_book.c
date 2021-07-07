@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
   } 
 
   if (strcmp(argv[1], "add") == 0) {   /* Handle add */
-    if (argc != 4) {
+    if (argc !=4) {
       print_usage("Improper arguments for add", argv[0]);
       exit(1);
     }
@@ -190,7 +190,7 @@ void write_all_entries(entry * p) {
 
 void add(char *name, char *phone) {
   FILE *fp = fopen(DB, "a");
-  fprintf(fp, "%s,%s\n", name, phone);
+  fprintf(fp,"%s,%s\n", name, phone);
   fclose(fp);
 }
 
@@ -255,7 +255,7 @@ int delete(FILE *db_file, char *name) {
 int search(FILE *db_file, char *name){
  entry *p = load_entries(db_file);
   entry *base = p;
-  int m=1;
+  int m=0;
   while (p!=NULL) {
   if(strcmp(name,p->name)==0)
    { printf("%s\n",p->phone);
