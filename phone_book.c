@@ -202,26 +202,9 @@ void list(FILE *db_file) {
     p=p->next;
     count++;
     }
-printf("Total entries : %d\n ",count);
+printf("Total entries :  %d\n",count);
   /* TBD print total count */
   free_entries(base);
-}
-int search(FILE *db_file, char *name){
- entry *p = load_entries(db_file);
-  entry *base = p;
-  int m=1;
-  while (p!=NULL) {
-  if(strcmp(name,p->name)==0)
-   { printf("%s\n",p->phone);
-    m++;}
-p=p->next;
-    }
-      if(m!=1)
-  {
-    return 0;
-  }
-  free_entries(base);
-  return 1;
 }
 
 int delete(FILE *db_file, char *name) {
@@ -266,4 +249,22 @@ int delete(FILE *db_file, char *name) {
   write_all_entries(base);
   free_entries(base);
   return deleted;
+}
+
+int search(FILE *db_file, char *name){
+ entry *p = load_entries(db_file);
+  entry *base = p;
+  int m=1;
+  while (p!=NULL) {
+  if(strcmp(name,p->name)==0)
+   { printf("%s\n",p->phone);
+    m++;}
+p=p->next;
+    }
+      if(m!=1)
+  {
+    return 0;
+  }
+  free_entries(base);
+  return 1;
 }
